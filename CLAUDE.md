@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 This is a fullstack e-commerce application with:
-- **Backend**: Spring Boot 4.0.3 API (`onlineshopapi/`)
+- **Backend**: Spring Boot 4.0.6 API (`onlineshopapi/`)
 - **Frontend**: Angular 21 SPA (`onlineshopui/`)
 - **Database**: PostgreSQL 18
 
@@ -28,7 +28,7 @@ docker-compose up -d
 ```
 
 Database credentials (local):
-- Host: localhost:5432
+- Host: localhost:5433
 - Database: shopdb
 - User: shopuser
 - Password: shoppassword
@@ -108,6 +108,32 @@ npm run lint
 ```bash
 npm run format
 ```
+
+## Gotchas
+
+### Database Port
+Docker Compose maps PostgreSQL to **port 5433** (not default 5432) to avoid conflicts with local installations. Connection string in `application-local.yml` already uses the correct port.
+
+### Lombok Annotation Processing
+Backend compilation requires Lombok annotation processing enabled in your IDE:
+- **IntelliJ IDEA**: Settings → Build, Execution, Deployment → Compiler → Annotation Processors → Enable annotation processing
+- **Eclipse**: Install Lombok by running the `lombok.jar` installer
+- **VS Code**: Install "Lombok Annotations Support" extension
+
+Without this, you'll see compilation errors for generated getters/setters/constructors.
+
+### Order Fulfillment Strategy
+Switch between order processing strategies in `application.yml`:
+```yaml
+order:
+  strategy: SINGLE_LOCATION      # Ship entire order from one warehouse (default)
+  # strategy: MULTIPLE_LOCATIONS # Allow splitting order across warehouses
+```
+
+`SINGLE_LOCATION` throws `OrderNotProcessableException` if no single warehouse has all products in stock. `MULTIPLE_LOCATIONS` optimizes for fulfillment rate by splitting orders.
+
+### Mock Mode
+`npm run start:mock` uses Mock Service Worker (MSW) to intercept HTTP requests in the browser. Backend doesn't need to be running. Mock data defined in `onlineshopui/src/app/core/mocks/`.
 
 ## Architecture
 
@@ -199,3 +225,17 @@ User roles (`ADMIN`, `CUSTOMER`) control access via `@PreAuthorize` annotations 
 - Branch naming: `feat/<task_id>-<short-desc>`
 - Backend uses Lombok - ensure annotation processing is enabled in your IDE
 - Frontend uses Prettier - run `npm run format` before committing
+
+## Test Credentials
+
+Local mock data (`V1.1__populate_mock_data.sql`) seeds test users. All passwords are `password`.
+
+**Admin account:**
+- Email: `admin@onlineshop.com`
+- Password: `password`
+- Role: ADMIN
+
+**Customer accounts:**
+- Email: `john.doe@email.com` / Password: `password`
+- Email: `jane.smith@email.com` / Password: `password`
+- Role: CUSTOMER

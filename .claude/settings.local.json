@@ -43,7 +43,8 @@
       "Bash(tasklist)",
       "Bash(netstat -ano)",
       "Bash(taskkill /F /IM chrome.exe)",
-      "Bash(start Chrome Debug *)"
+      "Bash(start Chrome Debug *)",
+      "Bash(mvn --version)"
     ],
     "deny": [
       "Bash(git push:*)",
