@@ -1,0 +1,1 @@
+Product detail page showing Wireless Headphones at $149.99, with description, image, quantity selector, and "Add to Cart" button.

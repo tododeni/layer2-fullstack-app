@@ -1,0 +1,1 @@
+Detailed view of the newly created order showing order ID, timestamp, shipping information, and order items.

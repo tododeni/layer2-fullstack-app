@@ -1,0 +1,1 @@
+Product successfully added to cart with confirmation modal showing "Wireless Headphones was added to your cart."

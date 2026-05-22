@@ -1,0 +1,1 @@
+Order successfully created with confirmation modal. Order ID: cf3d8b7b-9c28-471e-84c7-e12a4e319d51, containing 1 item, total $149.99.

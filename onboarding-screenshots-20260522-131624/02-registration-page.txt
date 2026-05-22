@@ -1,0 +1,1 @@
+Registration page with fields for email, first name, last name, and password to create a new account.

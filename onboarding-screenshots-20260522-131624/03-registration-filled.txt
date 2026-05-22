@@ -1,0 +1,1 @@
+Registration form filled with test user credentials (onboarduser@example.com), ready to submit.
