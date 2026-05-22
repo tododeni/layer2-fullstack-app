@@ -44,16 +44,7 @@
       "Bash(netstat -ano)",
       "Bash(taskkill /F /IM chrome.exe)",
       "Bash(start Chrome Debug *)",
-      "Bash(mvn --version)",
-      "Bash(docker-compose ps *)",
-      "Bash(mvn clean *)",
-      "Bash(java *)",
-      "Bash(./mvnw clean *)",
-      "Bash(npm run *)",
-      "Bash(cd /c/dev/layer2-fullstack-app/layer2-fullstack-app/onlineshopapi)",
-      "Bash(export JAVA_HOME=\"C:/Program Files/Microsoft/jdk-21.0.11.10-hotspot\")",
-      "Bash(mvn spring-boot:run -Dspring-boot.run.profiles=local)",
-      "Bash(taskkill *)"
+      "Bash(mvn --version)"
     ],
     "deny": [
       "Bash(git push:*)",

@@ -21,12 +21,10 @@ import {
     calculateCartSubtotal,
     toCreateOrderDto
 } from '../../../utils/cart.utils';
-import { createAddressForm } from '../../../utils/address-form.utils';
-import { AddressFormComponent } from '../../views/address-form/address-form.component';
 
 @Component({
     selector: 'app-cart-overview-page',
-    imports: [SpinnerComponent, CartItemRowComponent, CartSummaryComponent, AddressFormComponent, RouterLink],
+    imports: [SpinnerComponent, CartItemRowComponent, CartSummaryComponent, RouterLink],
     templateUrl: './cart-overview-page.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -55,7 +53,6 @@ export class CartOverviewPageComponent implements OnInit {
     );
 
     readonly itemCount = this.cartService.totalItems;
-    readonly addressForm = createAddressForm();
 
     ngOnInit(): void {
         this.productService.loadAll().pipe(take(1)).subscribe();
@@ -76,18 +73,7 @@ export class CartOverviewPageComponent implements OnInit {
     onCheckout(): void {
         if (this.cartItems().length === 0) return;
 
-        // Validate address form
-        if (this.addressForm.invalid) {
-            this.addressForm.markAllAsTouched();
-            this.notificationsService.notifyError({
-                title: 'Missing delivery address',
-                message: 'Please fill in all required address fields.'
-            });
-            return;
-        }
-
-        const address = this.addressForm.getRawValue();
-        const payload = toCreateOrderDto(this.cartItems(), address);
+        const payload = toCreateOrderDto(this.cartItems());
         if (!payload) return;
 
         this.isSubmitting.set(true);
@@ -98,7 +84,6 @@ export class CartOverviewPageComponent implements OnInit {
                 next: () => {
                     this.isSubmitting.set(false);
                     this.cartService.clear();
-                    this.addressForm.reset();
                     this.notificationsService.notifySuccess({
                         title: 'Order placed',
                         message: 'Your order is being processed.'

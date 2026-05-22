@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import msg.onlineshopapi.dto.OrderRequestDto;
 import msg.onlineshopapi.dto.OrderResponseDto;
@@ -52,7 +51,7 @@ public class OrderController {
     @Operation(summary = "Create an order", description = "Creates a new order for the authenticated user. Requires authentication.")
     @ApiResponse(responseCode = "201", description = "Order created successfully")
     @ApiResponse(responseCode = "400", description = "Invalid order data")
-    public OrderResponseDto create(@Valid @RequestBody OrderRequestDto dto, Principal principal) {
+    public OrderResponseDto create(@RequestBody OrderRequestDto dto, Principal principal) {
         return orderMapper.toDto(orderService.createOrder(orderMapper.toEntity(dto), principal.getName()));
     }
 }
