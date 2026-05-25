@@ -53,7 +53,8 @@
       "Bash(cd /c/dev/layer2-fullstack-app/layer2-fullstack-app/onlineshopapi)",
       "Bash(export JAVA_HOME=\"C:/Program Files/Microsoft/jdk-21.0.11.10-hotspot\")",
       "Bash(mvn spring-boot:run -Dspring-boot.run.profiles=local)",
-      "Bash(taskkill *)"
+      "Bash(taskkill *)",
+      "Bash(git *)"
     ],
     "deny": [
       "Bash(git push:*)",
