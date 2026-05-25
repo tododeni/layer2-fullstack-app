@@ -44,6 +44,7 @@ public class OrderMapper {
 
         return Order.builder()
                 .orderDetails(details)
+                .address(dto.getAddress() != null ? addressMapper.toEntity(dto.getAddress()) : null)
                 .build();
     }
 }
