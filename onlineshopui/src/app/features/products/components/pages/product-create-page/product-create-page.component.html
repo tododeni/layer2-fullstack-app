@@ -6,17 +6,18 @@
             <p class="mt-2 text-text-muted">Add a new product to your catalog</p>
         </div>
 
-        <!-- Loading State for Categories -->
-        @if (loading() && categories().length === 0) {
+        <!-- Loading State for Categories/Suppliers -->
+        @if (loading() && (categories().length === 0 || suppliers().length === 0)) {
             <app-spinner [overlay]="true"></app-spinner>
         }
 
         <!-- Form -->
-        @if (!loading() || categories().length > 0) {
+        @if (categories().length > 0 && suppliers().length > 0) {
             <app-card>
                 <app-product-form
                     [form]="form"
                     [categories]="categories()"
+                    [suppliers]="suppliers()"
                     [isSubmitting]="isSubmitting()"
                     [submitLabel]="'Create Product'"
                     (formSubmit)="onSubmit()"

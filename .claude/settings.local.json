@@ -53,7 +53,21 @@
       "Bash(cd /c/dev/layer2-fullstack-app/layer2-fullstack-app/onlineshopapi)",
       "Bash(export JAVA_HOME=\"C:/Program Files/Microsoft/jdk-21.0.11.10-hotspot\")",
       "Bash(mvn spring-boot:run -Dspring-boot.run.profiles=local)",
-      "Bash(taskkill *)"
+      "Bash(taskkill *)",
+      "Bash(git *)",
+      "Bash(docker-compose up *)",
+      "Bash(mvn spring-boot:run \"-Dspring-boot.run.profiles=local\")",
+      "Bash(where java *)",
+      "Bash(export JAVA_HOME=\"/c/Program Files/Microsoft/jdk-21.0.11.10-hotspot\")",
+      "Bash(JAVA_HOME=\"/c/Program Files/Microsoft/jdk-21.0.11.10-hotspot\" /c/Users/lupud/apache-maven-3.8.8-bin/apache-maven-3.8.8/bin/mvn spring-boot:run \"-Dspring-boot.run.profiles=local\")",
+      "Bash(docker exec development-postgres-1 *)",
+      "Bash(docker exec postgres_db *)",
+      "Bash(JAVA_HOME=\"/c/Program Files/Microsoft/jdk-21.0.11.10-hotspot\" /c/Users/lupud/apache-maven-3.8.8-bin/apache-maven-3.8.8/bin/mvn compile *)",
+      "WebFetch(domain:localhost)",
+      "Bash(powershell *)",
+      "Bash(powershell.exe *)",
+      "Bash(JAVA_HOME=\"/c/Program Files/Microsoft/jdk-21.0.11.10-hotspot\" /c/Users/lupud/apache-maven-3.8.8-bin/apache-maven-3.8.8/bin/mvn test)",
+      "Bash(JAVA_HOME=\"/c/Program Files/Microsoft/jdk-21.0.11.10-hotspot\" /c/Users/lupud/apache-maven-3.8.8-bin/apache-maven-3.8.8/bin/mvn test -Dtest=\"SupplierControllerTest,ProductControllerTest,ProductCategoryControllerTest\")"
     ],
     "deny": [
       "Bash(git push:*)",

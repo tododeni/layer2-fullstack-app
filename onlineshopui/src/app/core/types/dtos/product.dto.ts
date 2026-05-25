@@ -4,6 +4,12 @@ export type ProductCategoryDto = {
     description: string;
 };
 
+export type SupplierDto = {
+    id: string;
+    name: string;
+    contactInfo: string;
+};
+
 export type ProductDto = {
     id: string;
     name: string;
@@ -11,9 +17,16 @@ export type ProductDto = {
     price: number;
     weight: number;
     category: ProductCategoryDto;
+    supplier: SupplierDto | null;
     imageUrl: string;
 };
 
-export type CreateProductRequest = Omit<ProductDto, 'id' | 'category'> & { categoryId: string };
+export type CreateProductRequest = Omit<ProductDto, 'id' | 'category' | 'supplier'> & {
+    categoryId: string;
+    supplierId: string;
+};
 
-export type UpdateProductRequest = Partial<ProductDto> & { categoryId?: string };
+export type UpdateProductRequest = Partial<Omit<ProductDto, 'id' | 'category' | 'supplier'>> & {
+    categoryId?: string;
+    supplierId?: string;
+};

@@ -46,12 +46,19 @@
                     <!-- Product Info -->
                     <div class="flex flex-col">
                         <!-- Category Badge -->
-                        <div class="mb-3">
+                        <div class="mb-3 flex flex-wrap gap-2">
                             <span
                                 class="inline-block px-3 py-1 text-sm font-medium rounded-md bg-primary/10 text-primary"
                             >
                                 {{ product()!.category.name }}
                             </span>
+                            @if (product()!.supplier) {
+                                <span
+                                    class="inline-block px-3 py-1 text-sm font-medium rounded-md bg-surface-2 text-text-muted"
+                                >
+                                    Supplied by {{ product()!.supplier!.name }}
+                                </span>
+                            }
                         </div>
 
                         <!-- Product Name -->
