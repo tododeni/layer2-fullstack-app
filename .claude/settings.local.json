@@ -62,7 +62,10 @@
       "Bash(JAVA_HOME=\"/c/Program Files/Microsoft/jdk-21.0.11.10-hotspot\" /c/Users/lupud/apache-maven-3.8.8-bin/apache-maven-3.8.8/bin/mvn spring-boot:run \"-Dspring-boot.run.profiles=local\")",
       "Bash(docker exec development-postgres-1 *)",
       "Bash(docker exec postgres_db *)",
-      "Bash(JAVA_HOME=\"/c/Program Files/Microsoft/jdk-21.0.11.10-hotspot\" /c/Users/lupud/apache-maven-3.8.8-bin/apache-maven-3.8.8/bin/mvn compile *)"
+      "Bash(JAVA_HOME=\"/c/Program Files/Microsoft/jdk-21.0.11.10-hotspot\" /c/Users/lupud/apache-maven-3.8.8-bin/apache-maven-3.8.8/bin/mvn compile *)",
+      "WebFetch(domain:localhost)",
+      "Bash(powershell *)",
+      "Bash(powershell.exe *)"
     ],
     "deny": [
       "Bash(git push:*)",
