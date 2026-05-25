@@ -1,5 +1,5 @@
 import { HttpResponse } from '@angular/common/http';
-import { MOCK_CATEGORIES, MOCK_PRODUCTS } from '../../data/products.mock';
+import { MOCK_CATEGORIES, MOCK_PRODUCTS, MOCK_SUPPLIERS } from '../../data/products.mock';
 import {
     CreateProductRequest,
     ProductDto,
@@ -92,6 +92,8 @@ function handleCreateProduct(body: CreateProductRequest): HttpResponse<unknown> 
         });
     }
 
+    const supplier = MOCK_SUPPLIERS.find(s => s.id === body.supplierId) ?? null;
+
     const newProduct: ProductDto = {
         id: `prod-${mockProductIdCounter++}`,
         name: body.name,
@@ -99,7 +101,8 @@ function handleCreateProduct(body: CreateProductRequest): HttpResponse<unknown> 
         price: body.price,
         weight: body.weight,
         imageUrl: body.imageUrl,
-        category
+        category,
+        supplier
     };
 
     mockProducts.push(newProduct);
@@ -123,11 +126,19 @@ function handleUpdateProduct(id: string, body: UpdateProductRequest): HttpRespon
 
     const existingProduct = mockProducts[index];
     let category = existingProduct.category;
+    let supplier = existingProduct.supplier;
 
     if (body.categoryId) {
         const foundCategory = MOCK_CATEGORIES.find(c => c.id === body.categoryId);
         if (foundCategory) {
             category = foundCategory;
+        }
+    }
+
+    if (body.supplierId) {
+        const foundSupplier = MOCK_SUPPLIERS.find(s => s.id === body.supplierId);
+        if (foundSupplier) {
+            supplier = foundSupplier;
         }
     }
 
@@ -138,7 +149,8 @@ function handleUpdateProduct(id: string, body: UpdateProductRequest): HttpRespon
         price: body.price ?? existingProduct.price,
         weight: body.weight ?? existingProduct.weight,
         imageUrl: body.imageUrl ?? existingProduct.imageUrl,
-        category
+        category,
+        supplier
     };
 
     mockProducts[index] = updatedProduct;

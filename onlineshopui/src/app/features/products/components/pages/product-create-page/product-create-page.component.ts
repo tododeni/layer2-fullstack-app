@@ -23,6 +23,7 @@ export class ProductCreatePageComponent implements OnInit {
 
     readonly form = createProductForm();
     readonly categories = this.productService.categories;
+    readonly suppliers = this.productService.suppliers;
     readonly loading = this.productService.loading;
     readonly isSubmitting = signal(false);
 
@@ -39,6 +40,7 @@ export class ProductCreatePageComponent implements OnInit {
 
     ngOnInit(): void {
         this.productService.loadCategories().pipe(take(1)).subscribe();
+        this.productService.loadSuppliers().pipe(take(1)).subscribe();
     }
 
     onSubmit(): void {
@@ -54,7 +56,8 @@ export class ProductCreatePageComponent implements OnInit {
             price: formValue.price,
             weight: formValue.weight,
             imageUrl: formValue.imageUrl,
-            categoryId: formValue.categoryId
+            categoryId: formValue.categoryId,
+            supplierId: formValue.supplierId
         };
 
         this.isSubmitting.set(true);
